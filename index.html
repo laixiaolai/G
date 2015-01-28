@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html xmlns:wb="http://open.weibo.com/wb">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>首页</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery-1.7.1.js"></script>
+<script src="js/modernizr.js"></script>
+<script src="js/conditional.js"></script>
+<script src="js/script.js"></script>
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.bxslider.min.js"></script>
+<link href="css/jquery.bxslider.css" rel="stylesheet">
+</head>
+<body>
+    <div id="masthead" class="fixed site-header" role="banner">
+        <div id="header-meta">
+            <div class="layout-wrapper clearfix">
+                <div class="switch_city"><strong id="city">厦门</strong>&nbsp;<a id="togglecity" class="changeCity" href="javascript:;">切换城市<span class="arrow"></span></a>
+                    <div id="citylist" class="citylist">
+                        <ul class="listcity">
+                            <li><a href="javascript:;">澳门</a></li>
+                            <li><a href="javascript:;">北京</a></li>
+                            <li><a href="javascript:;">长春</a></li>
+                            <li><a href="javascript:;">长沙</a></li>
+                            <li><a href="javascript:;">香港</a></li>
+                            <li><a href="javascript:;">广州</a></li>
+                            <li><a href="javascript:;">深圳</a></li>
+                            <li><a href="javascript:;">台湾</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <form action="#" method="post" id="form-search">
+                    <input type="text" name="search" class="search" value="" placeholder="想搜索什么？">
+                    <div id="sel" class="select"><span class="icon"></span>
+                    <select name="分类">
+                      <option value="全部分类">全部分类</option>
+                      <option value="宝贝">宝贝</option>
+                      <option value="店铺">店铺</option>
+                    </select>
+                    </div>
+                    <input type="submit" value="搜索" class="go">
+                </form>
+                <div class="wb_ad"><wb:follow-button uid="2991975565" type="red_1" width="62" height="20"></wb:follow-button></div>
+                <div id="header-meta-contact">
+                    <a class="shopcart" href="#" target="_blank">购物车&nbsp;<span>0</span></a>
+                    <a class="regin" href="#" target="_blank">注册</a>
+                    <a class="login" href="#" target="_blank">登录</a>
+                    <a class="share" href="#" target="_blank">分享</a>
+                </div>
+            </div>
+        </div>
+        <div id="header-nav">
+            <div class="layout-wrapper clearfix">
+                <a id="logo-eat" href="#" class="router"><img src="img/gtly_logo.png" alt="钢铁老爷"></a>
+                <ul class="mainNav" id="mainNav">
+                    <li id="nav-link-home" class="active">
+                        <a href="#" title="首页">
+                            <span class="text-container">
+                                <div class="indicator">
+                                    <div class="indicator-fill">
+                                    </div>
+                                </div>
+                                首页
+                            </span>
+                        </a>
+                    </li>
+                    <li id="nav-link-tour">
+                        <a href="#" title="逛逛">
+                            <span class="text-container">
+                                <div class="indicator">
+                                    <div class="indicator-fill">
+                                    </div>
+                                </div>
+                                逛逛
+                            </span>
+                        </a>
+                    </li>
+                    <li id="nav-link-women">
+                        <a href="#" title="女人广场">
+                            <span class="text-container">
+                                <div class="indicator">
+                                    <div class="indicator-fill">
+                                    </div>
+                                </div>
+                                女人广场
+                            </span>
+                        </a>
+                    </li>
+                    <li id="nav-link-man">
+                        <a href="#" title="男人广场">
+                            <span class="text-container">
+                                <div class="indicator">
+                                    <div class="indicator-fill">
+                                    </div>
+                                </div>
+                                男人广场
+                            </span>
+                        </a>
+                    </li>
+                    <li id="nav-link-sale">
+                        <a href="#" title="出售">
+                            <span class="text-container">
+                                <div class="indicator">
+                                    <div class="indicator-fill">
+                                    </div>
+                                </div>
+                                出售
+                            </span>
+                        </a>
+                    </li>
+                    <li id="nav-link-liver">
+                        <a href="#" title="生活家">
+                            <span class="text-container">
+                                <div class="indicator">
+                                    <div class="indicator-fill">
+                                    </div>
+                                </div>
+                                生活家
+                            </span>
+                        </a>
+                    </li>
+                    <li id="nav-link-desiger">
+                        <a href="#" title="设计师作品">
+                            <span class="text-container">
+                                <div class="indicator">
+                                    <div class="indicator-fill">
+                                    </div>
+                                </div>
+                                设计师作品
+                            </span>
+                        </a>
+                    </li>
+                    <li id="nav-link-shougong">
+                        <a href="#" title="手工作坊">
+                            <span class="text-container">
+                                <div class="indicator">
+                                    <div class="indicator-fill">
+                                    </div>
+                                </div>
+                                手工作坊
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        oSel('sel');//下拉
+        //城市切换
+        document.onclick=function(e){
+            var e=e||event;
+            var target=e.target||e.srcElement;
+            if(target.id=='togglecity'){
+                document.getElementById('citylist').style.display='block';
+            }
+            if(target.id!='togglecity'&&target.id!='citylist'){
+                document.getElementById('citylist').style.display='none';
+            }
+            if(target.tagName=='A'&&target.parentNode.parentNode.parentNode.id=='citylist'){
+                document.getElementById('city').innerHTML=target.innerHTML;
+                return false;   
+            }
+
+        }   
+        
+         
+    </script>
+    <div id="main" class="wrapper">
+        <div id="primary" class="site-content template-home" data-nav="home">
+            <div id="content">
+            <div class="m-focusPic">
+                <ul class="bxslider">
+                  <li><img src="img/jd.jpg" /></li>
+                  <li><img src="img/jd.jpg" /></li>
+                  <li><img src="img/jd.jpg" /></li>
+                  <li><img src="img/jd.jpg" /></li>
+                </ul>
+            </div>
+                <script>
+                    $(document).ready(function(){
+                      $('.bxslider').bxSlider(
+                        {
+                          auto: true,
+                          autoControls: false
+                        }
+                        );
+                    });//焦点图轮播
+                </script>
+                <div id="home-content" class="home-inner">
+                    <div class="layout-wrapper">
+                        <ul id="home-features" class="fx-container-fade clearfix">
+                            <li class="s1">
+                                <a href="#" target="_blank">
+                                    <img src="img/s1.jpg">
+                                </a>
+                            </li>
+                            <li class="s2">
+                                <a href="#" target="_blank">
+                                    <img src="img/s2.png">
+                                </a>
+                            </li>
+                            <li class="s3">
+                                <a href="#" target="_blank">
+                                    <img src="img/s3.jpg">
+                                </a>
+                            </li>
+                            <li class="s5">
+                                <a href="#" target="_blank">
+                                    <img src="img/s5_01.jpg">
+                                </a>
+                            </li>
+                            <li class="s4">
+                                <a href="#" target="_blank">
+                                    <img src="img/s4.png">
+                                </a>
+                            </li>
+                            <li class="s5">
+                                <a href="#" target="_blank">
+                                    <img src="img/s5_03.jpg">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="home-social" class="inverted">
+                        <img id="home-social-bg" class="parallax parallax-bg" src="img/home_cats_bg.jpg">
+                        <ul id="home-social-articles" class="layout-wrapper clearfix" style="width:771px;">
+                            <li>
+                                <a href="#" title="Wild Wild West by Wolfgang &amp; Willi">
+                                    <div class="border-button inverted">潮我来</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Kai &amp; Sons USA Tour 2014">
+                                    <div class="border-button inverted">最热潮物</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Kai &amp; Sons USA Tour 2014">
+                                    <div class="border-button inverted">最新推荐</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Wild Wild West by Wolfgang &amp; Willi">
+                                    <div class="border-button inverted">朋友发布</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Kai &amp; Sons USA Tour 2014">
+                                    <div class="border-button inverted">潮鞋</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Kai &amp; Sons USA Tour 2014">
+                                    <div class="border-button inverted">视频</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="layout-wrapper"> 
+                        <ul class="cnslider">
+                            <li>
+                                <ul id="home-tours" class="fx-teaser-fade teaser-list teaser-list-triple big-teasers clearfix">
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文中文中文中文中</span>
+                                                <span class="word8">2014系列</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul id="home-tours" class="fx-teaser-fade teaser-list teaser-list-triple big-teasers clearfix">
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文中文中文中文中</span>
+                                                <span class="word8">2014系列</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="fx size-1 slide-module">
+                                        <a href="#">
+                                            <img class="bg-hover" src="img/w400.jpg" alt="">
+                                            <span class="love"></span>
+                                            <h3 class="word-split big">
+                                                <span class="word1">中文中文</span>
+                                                <span class="word8">2014</span>
+                                            </h3>
+                                            <div class="button tours-button"><span class="price">234</span><span class="like">99</span></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <script>
+                            $(document).ready(function(){
+                              $('.cnslider').bxSlider({
+                                  auto: true,
+                                  autoControls: true
+                                });
+                            });//焦点图轮播
+                        </script>
+                    </div>
+                    <div id="s_cats" class="inverted">
+                        <img class="s_cats-bg" src="img/d_cats_bg.jpg">
+                        <div class="s_cats_articles layout-wrapper clearfix">
+                            <dl>
+                                <dt><span>产品类目文字</span></dt>
+                                <dd class="clearfix"><a hrer="#" target="_blank">美容健康</a><a hrer="#" target="_blank">编辑推荐</a><a hrer="#" target="_blank">美容健康</a><a hrer="#" target="_blank">编辑推荐</a><a hrer="#" target="_blank">美容健康</a><a hrer="#" target="_blank">编辑推荐</a><a hrer="#" target="_blank">美容健康</a><a hrer="#" target="_blank">编辑推荐</a><a hrer="#" target="_blank">美容健康</a><a hrer="#" target="_blank">编辑推荐</a><a hrer="#" target="_blank">美容健康</a><a hrer="#" target="_blank">编辑推荐</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>产品类目文字</dt>
+                                <dd class="clearfix"><a hrer="#" target="_blank">美容健康</a><a hrer="#" target="_blank">编辑推荐</a><a hrer="#" target="_blank">美容健康</a><a hrer="#" target="_blank">编辑推荐</a><a hrer="#" target="_blank">美容健康</a><a hrer="#" target="_blank">编辑推荐</a><a hrer="#" target="_blank">美容健康</a><a hrer="#" target="_blank">编辑推荐</a><a hrer="#" target="_blank">美容健康</a><a hrer="#" target="_blank">编辑推荐</a><a hrer="#" target="_blank">美容健康</a><a hrer="#" target="_blank">编辑推荐</a></dd>
+                            </dl>
+                            <dl class="w50">
+                                <dt>产品类目文字</dt>
+                                <dd class="clearfix"><a href="#" target="_blank"><img src="img/w119.jpg" /></a><a href="#" target="_blank"><img src="img/w119.jpg" /></a><a href="#" target="_blank"><img src="img/w119.jpg" /></a><a style="margin:0;" href="#" target="_blank"><img src="img/w119.jpg" /></a></dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="layout-wrapper"> 
+                        <ul id="home-tours" class="fx-teaser-fade teaser-list teaser-list-triple big-teasers clearfix">
+                            <li class="fx size-2 slide-module">
+                                <a href="#">
+                                    <img class="bg-hover" src="img/w820.jpg" alt="Daytona Bike Week 2015">
+                                    <h3 class="word-split big">
+                                        <span class="word1">产品标题</span>
+                                        <span class="word2">产品标题</span>
+                                        <span class="word3">产品标</span>
+                                        <span class="word4">2015</span>
+                                    </h3>
+                                    <div class="button tours-button">205
+                                        <span class="like"></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="fx size-1 slide-module">
+                                <a href="#">
+                                    <img class="bg-hover" src="img/w400.jpg" alt="Hotel zur Custombike Show 2014">
+                                    <h3 class="word-split big">
+                                        <span class="word1">中文中文</span>
+                                        <span class="word2">中文中文</span>
+                                        <span class="word3">中文中文</span>
+                                        <span class="word4">中文中文</span>
+                                        <span class="word8">2014</span>
+                                        <span class="word5">2014</span>
+                                    </h3>
+                                    <div class="button tours-button">300
+                                        <span class="like"></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="fx size-1 slide-module">
+                                <a href="#">
+                                    <img class="bg-hover" src="img/w400.jpg" alt="">
+                                    <h3 class="word-split big">
+                                        <span class="word1">中文中文</span>
+                                        <span class="word2">中文中文</span>
+                                        <span class="word3">中文中文</span>
+                                        <span class="word4">中文中文</span>
+                                        <span class="word8">2014</span>
+                                    </h3>
+                                    <div class="button tours-button">234
+                                        <span class="like"></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="fx size-1 slide-module">
+                                <a href="#">
+                                    <img class="bg-hover" src="img/w400.jpg" alt="">
+                                    <h3 class="word-split big">
+                                        <span class="word1">中文中文</span>
+                                        <span class="word2">中文中文</span>
+                                        <span class="word3">中文中文</span>
+                                        <span class="word4">中文中文</span>
+                                        <span class="word8">2014</span>
+                                    </h3>
+                                    <div class="button tours-button">234
+                                        <span class="like"></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="fx size-1 slide-module">
+                                <a href="#">
+                                    <img class="bg-hover" src="img/w400.jpg" alt="">
+                                    <h3 class="word-split big">
+                                        <span class="word1">中文中文</span>
+                                        <span class="word2">中文中文</span>
+                                        <span class="word3">中文中文</span>
+                                        <span class="word4">中文中文</span>
+                                        <span class="word8">2014</span>
+                                    </h3>
+                                    <div class="button tours-button">234
+                                        <span class="like"></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="fx size-1 slide-module">
+                                <a href="#">
+                                    <img class="bg-hover" src="img/w400.jpg" alt="">
+                                    <h3 class="word-split big">
+                                        <span class="word1">中文中文</span>
+                                        <span class="word2">中文中文</span>
+                                        <span class="word3">中文中文</span>
+                                        <span class="word4">中文中文</span>
+                                        <span class="word8">2014</span>
+                                    </h3>
+                                    <div class="button tours-button">234
+                                        <span class="like"></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="fx size-1 slide-module">
+                                <a href="#">
+                                    <img class="bg-hover" src="img/w400.jpg" alt="">
+                                    <h3 class="word-split big">
+                                        <span class="word1">中文中文</span>
+                                        <span class="word2">中文中文</span>
+                                        <span class="word3">中文中文</span>
+                                        <span class="word4">中文中文</span>
+                                        <span class="word8">2014</span>
+                                    </h3>
+                                    <div class="button tours-button">￥999
+                                        <span class="like"></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="fx size-1 slide-module">
+                                <a href="#">
+                                    <img class="bg-hover" src="img/w400.jpg" alt="">
+                                    <h3 class="word-split big">
+                                        <span class="word1">中文中文</span>
+                                        <span class="word2">中文中文</span>
+                                        <span class="word3">中文中文</span>
+                                        <span class="word4">中文中文</span>
+                                        <span class="word8">2014</span>
+                                    </h3>
+                                    <div class="button tours-button">￥999
+                                        <span class="like"></span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul id="home-categories" class="clearfix" style="background:none">
+                            <li class="animated fadeInUp">
+                                <a href="#" target="_blank">
+                                    <img class="home-categories-bg" src="img/good_cats.jpg" alt="Individual USA-Reisen">
+                                </a>
+                            </li>
+                            <li class="animated fadeInUp">
+                                <a href="#">
+                                    <img class="home-categories-bg" src="img/good_cats.jpg" alt="Individual USA-Reisen">
+                                </a>
+                            </li>
+                            <li class="animated fadeInUp">
+                                <a href="#">
+                                    <img class="home-categories-bg" src="img/good_cats.jpg" alt="Individual USA-Reisen">
+                                </a>
+                            </li>
+                            <li class="animated fadeInUp">
+                                <a href="#">
+                                    <img class="home-categories-bg" src="img/good_cats.jpg" alt="Individual USA-Reisen">
+                                </a>
+                            </li>
+                        </ul>             
+                    </div>
+                    <div id="bottom" class="inverted">
+                        <img id="bottom-bg" class="parallax bottom-bg" src="img/past_topic_bg.jpg" style="transform: translate3d(0px, -28.75px, 0px);">
+                        <h4 class="inverted"><img src="img/past_topics.png" /></h4>
+                        <ul id="bottom-articles" class="layout-wrapper clearfix">
+                            <li>
+                                <a href="#" title="Wild Wild West by Wolfgang &amp; Willi">
+                                    <div class="img-border"><img src="img/w296.jpg" alt="">
+                                    </div>
+                                    <div class="border-button inverted">主题标题文字</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="">
+                                    <div class="img-border"><img src="img/w296.jpg" alt="">
+                                    </div>
+                                    <div class="border-button inverted">主题标题文字</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="">
+                                    <div class="img-border"><img src="img/w296.jpg" alt="">
+                                    </div>
+                                    <div class="border-button inverted">主题标题文字</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="">
+                                    <div class="img-border"><img src="img/w296.jpg" alt="">
+                                    </div>
+                                    <div class="border-button inverted">主题标题文字</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /#home-inner -->
+
+            </div>
+            <!-- #content -->
+        </div>
+        <!-- #primary -->
+
+    </div>
+
+    <div id="footer">
+        <div class="footer-a">
+            <div class="container pr">
+                <div class="nav">
+                    <ul>
+                        <li>关于我们</li>
+                        <li><a href="#">关于我们</a>
+                        </li>
+                        <li><a href="#">加入我们</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>配送方式</li>
+                        <li><a href="#">配送范围及时间</a>
+                        </li>
+                        <li><a href="#">商品验货与签收</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>支付方式</li>
+                        <li><a href="#">网上支付</a>
+                        </li>
+                        <li><a href="#">支付常见问题</a>
+                        </li>
+                        <li><a href="#">如何使用代金券</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>售后服务</li>
+                        <li><a href="#">退换货政策</a>
+                        </li>
+                        <li><a href="#">退款说明</a>
+                        </li>
+                        <li><a href="#">安全价格保证政策</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>帮助信息</li>
+                        <li><a href="#">常见问题</a>
+                        </li>
+                        <li><a href="#">找回密码</a>
+                        </li>
+                        <li><a href="#">联系客服</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- // .nav -->
+                <div class="showto m-hidden">
+                    <section id="social" class="section">
+                        <div class="wrapper">
+                            <ul>
+                                <li class="weixin">
+                                    <a href="#" target="_blank" class="overlay"><span class="out" style="width: 100%; z-index: 1;"></span><span class="on" style="width: 100%; z-index: 1;"></span></a>
+                                </li>
+                                <li class="weibo">
+                                    <a href="#" target="_blank" class="overlay"><span class="out" style="width: 100%; z-index: 1;"></span><span class="on" style="width: 100%; z-index: 1;"></span></a>
+                                </li>
+                                <li class="qq">
+                                    <a href="#" target="_blank" class="overlay"><span class="out" style="width: 100%; z-index: 0;"></span><span class="on" style="width: 100%; z-index: 1;"></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- //.wc -->
+        </div>
+        <!-- //.footer-a -->
+        <div class="footer-b">
+            <div class="container">
+                <div class="nav">
+                    <div class="copyright"><span class="hide-sm">gtly.com&nbsp;</span>©&nbsp;2011-2014&nbsp;All&nbsp;rights&nbsp;reserved&nbsp;<a href="http://www.miibeian.gov.cn">京ICP备13034710号-1</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+</body>
+</html>

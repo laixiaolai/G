@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>登陆 - 钢铁老爷</title>
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+<link href="css/login.css" rel="stylesheet" />
+<script src="js/jquery-1.7.1.js"></script>
+<script src="js/modernizr.js"></script>
+<script src="js/conditional.js"></script>
+<script src="js/script.js"></script>
+</head>
+<body>
+	<!-- the header and navigation -->
+	<div id="header" class="header-top">
+		<div class="header-container" id="J_topBanner">
+			<div class="header-a">
+				<div class="container pr"><a class="header-logo" href="/">钢铁老爷</a></div>
+			</div>
+		</div>
+	</div> 
+	<!-- the content -->
+	<div class="default-bkg m-hidden"></div>
+	<div class="overlay" id="personalpop">
+		<div class="bg_wrap">
+	    </div>
+	    <div class="login-dialog login-page" id="reg-login-area">
+	        <div class="login-main">
+	            <div class="login-main_title" id="J_login-main_title">
+	                <a class="checked" href="javascript:;">登录</a>&nbsp;|&nbsp;<a href="javascript:;" data-btntext="注册钢铁老爷">注册</a>
+	            </div>
+	            <form method="post" action="#" id="loginform" class="login-account" autocomplete="off">
+	                <input class="login-account_field login-account_email" type="email" name="email" id="uemail" placeholder="邮件地址" autocomplete="off">
+	                <input class="login-account_field login-account_passwd" type="password" name="password" id="upassword" placeholder="钢铁老爷密码" autocomplete="off">
+	                <div class="login-account_getpasswd">
+	                    <a href="#" target="_blank">忘记密码</a>
+	                </div>
+	                <a href="javascript:;" class="btn login-account_go" id="tologin-btn">登录钢铁老爷</a>
+	                <input type="hidden" name="remember" id="remember" value="1" title="下次自动登录">
+	                <input type="hidden" name="uagreeterms" id="uagreeterms" value="1" title="同意钢铁老爷服务条款">
+	            </form>
+	            <div class="login-other">
+	                <div class="login-other_title">第三方账号直接登陆：</div>
+	                <section id="social" class="section">
+                        <div class="wrapper">
+                            <ul>
+                                <li class="weixin">
+                                    <a href="#" target="_blank" class="overlay"><span class="out" style="width: 100%; z-index: 1;"></span><span class="on" style="width: 100%; z-index: 1;"></span></a>
+                                </li>
+                                <li class="weibo">
+                                    <a href="#" target="_blank" class="overlay"><span class="out" style="width: 100%; z-index: 1;"></span><span class="on" style="width: 100%; z-index: 1;"></span></a>
+                                </li>
+                                <li class="qq">
+                                    <a href="#" target="_blank" class="overlay"><span class="out" style="width: 100%; z-index: 0;"></span><span class="on" style="width: 100%; z-index: 1;"></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+	            </div>
+	        </div>
+	    </div>    
+	</div> 
+
+</body>
+</html>
